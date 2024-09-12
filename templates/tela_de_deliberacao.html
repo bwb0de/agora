@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block page_info %}
+<form id="formulario_corrente" nome="formulario_corrente" action="/processar_voto" method="POST" enctype="multipart/form-data"></form>
+    <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+
+        <div class='container_do_corpo_da_pagina'>
+            <div class="container_do_formulario">
+                
+                <h1 class="titulo_documento">{{ titulo }}</h1>
+
+                <h2>{{ tema }}<h2>
+
+                <p>{{ questao }}</p><br><br>
+
+                <input style="width:25px;" type="radio" id="sim" name="voto_escolhido" value="Sim">Sim &nbsp;&nbsp;
+                <input style="width:25px;" type="radio" id="nao" name="voto_escolhido" value="Não">Não &nbsp;&nbsp;
+                <input style="width:25px;" type="radio" id="abstensao" name="voto_escolhido" value="Abstensão">Abstenção<br><br>
+
+                <textarea id="observacoes" name="observacoes" rows="5" class="bg-gray-50" style="width: 75%;" placeholder="Observações..."></textarea><br><br>
+
+                <button type="submit" class="btn_padrao"> Registrar voto </button>
+            
+            </div>
+        </div>
+
+</form>
+
+{% endblock %}
+

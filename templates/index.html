@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block page_info %}
+
+        <div class='container_do_corpo_da_pagina'>
+            <div class="container_do_formulario">
+                
+                <h1 class="titulo_documento">Consultas abertas</h1>
+                <div class="cartao">
+                    <h2 class="cartao-header"><a href="/">Titulo</a></h2>
+                    <p class="cartao-body">Descrição...</p>
+                </div><br><br>
+
+                <table style="width: 100%; align-items: center;">
+                    <tr>
+                        <td style="width: 33.33%; align-items: center;">
+                            <button type="button" id="listar_todas_consultas" onclick="api_call('/');" class="bg-green-600 text-white hover:text-teal hover:bg-green-700 p-1 px-4 rounded-md">Listar todas consultas</button>
+                        </td>
+                    </tr>
+                </table><br><br>
+
+                
+                <div id="exp_info" style="text-align: center;"></div>
+
+                <script>
+                    function api_call(url) {
+                        el = document.getElementById('exp_info');
+                        fetch(url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Erro ao obter os dados da API');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            el.innerHTML = data
+                        })
+                        .catch(error => {
+                            console.error('Erro:', error);
+                        });                        
+                    }
+                </script>
+            
+            </div>
+        </div>
+
+{% endblock %}
+
